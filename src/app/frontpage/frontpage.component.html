@@ -1,0 +1,21 @@
+<div>
+
+     <input #city type="text" placeholder="City Name">
+     <br>
+     <button type="button" (click)="onCall(city.value)">Add</button>
+
+     {{city.value}}
+     <br>
+     <div *ngIf="dataGeoCode">
+          <h1>City Name: {{cityName}}</h1>
+          <h1>Country Name: {{countryName}}</h1>
+          <h1>Latitude: {{Lat}}</h1>
+          <h1>Lon: {{Lon}}</h1>
+     </div>
+
+     <div *ngIf="dataWeatherCode">
+          <h1>Weather Info {{cityName}}</h1>
+          <h1>Temprature right Now: {{tempRN}}</h1>
+     </div>
+
+</div>
