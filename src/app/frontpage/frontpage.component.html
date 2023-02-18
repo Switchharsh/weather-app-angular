@@ -1,21 +1,28 @@
-<div>
+<div class="page">
+<div class="card">
+     <div class="card-body">
+       <h5 class="card-title">Search Weather Information</h5>
+       <div>
 
-     <input #city type="text" placeholder="City Name">
-     <br>
-     <button type="button" (click)="onCall(city.value)">Add</button>
-
-     {{city.value}}
-     <br>
-     <div *ngIf="dataGeoCode">
-          <h1>City Name: {{cityName}}</h1>
-          <h1>Country Name: {{countryName}}</h1>
-          <h1>Latitude: {{Lat}}</h1>
-          <h1>Lon: {{Lon}}</h1>
+          <input #city type="text" placeholder="City Name">
+          
+          <button type="button" class="btn btn-primary" (click)="onCall(city.value)">Search</button>
+          <br>
+          <div class="geocodeInfo">
+          <div *ngIf="dataGeoCode">
+               <h1>City Name: {{cityName}}</h1>
+               <h1>Country Name: {{countryName}}</h1>
+               <h1>Latitude: {{Lat}}</h1>
+               <h1>Lon: {{Lon}}</h1>
+          </div>
      </div>
-
-     <div *ngIf="dataWeatherCode">
-          <h1>Weather Info {{cityName}}</h1>
-          <h1>Temprature right Now: {{tempRN}}</h1>
+     
+          <div *ngIf="dataWeatherCode">
+               <h1>Weather Info {{cityName}}</h1>
+               <h1>Temperature right Now: {{tempRN}}&deg;C</h1>
+          </div>
+     
      </div>
-
+     </div>
+   </div>
 </div>

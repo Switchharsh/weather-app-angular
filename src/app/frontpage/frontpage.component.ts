@@ -19,37 +19,46 @@ import { DataService } from '../dataservice';
 export class FrontpageComponent {
 
   constructor(private dataService: DataService) { }
+  //data from the APIs coming or not
   dataGeoCode: any; dataWeatherCode: any;
 
+  // data of the geocoding api
   cityName: any; Lat: any = 0; Lon: any; countryName: any;
 
+  //flags for the 2 apis for using in *ngIf
   dataFlag = false; weatherFlag: boolean = false;
 
   tempRN: any;
 
   onCall(cityName: string) {
-    console.log('hereh');
+    this.dataFlag = false;
+    this.weatherFlag = false;
+    // console.log('hereh');
     this.dataService.getGeoCodeData(cityName).subscribe(data => {
       this.dataFlag = true;
       this.dataGeoCode = data;
-      console.log(this.dataGeoCode.results[0].name);
+      // console.log(this.dataGeoCode.results[0].name);
       this.cityName = this.dataGeoCode.results[0].name;
       this.countryName = this.dataGeoCode.results[0].country;
       this.Lat = this.dataGeoCode.results[0].latitude;
       this.Lon = this.dataGeoCode.results[0].longitude;
-      this.weatherInfoCall(this.Lat,this.Lon);
+      this.weatherInfoCall(this.Lat, this.Lon);
     });
   }
-  weatherInfoCall(latitude: any,longitude: any) {
-    console.log('Lat' ,this.Lat);
+  weatherInfoCall(latitude: any, longitude: any) {
+    console.log('Lat', this.Lat);
     if (this.Lat != 0) {
       this.dataService.getWeatherInfo(this.Lat, this.Lon).subscribe(data => {
         this.weatherFlag = true;
         this.dataWeatherCode = data;
         console.log(this.dataWeatherCode);
         this.tempRN = this.dataWeatherCode.dataseries[0].temp2m;
-        console.log(this.tempRN);
+        // console.log(this.tempRN);
       })
     }
   }
+
+  weatherImageCall(latitude:any, longitude: any){
+    if(this.lL)
+  })
 }

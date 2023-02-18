@@ -17,4 +17,8 @@ export class DataService {
   getWeatherInfo(latitude: any, longitude: any){
     return this.http.get(`http://www.7timer.info/bin/api.pl?lon=${longitude}&lat=${latitude}&product=astro&output=json`);
   }
+
+  getWeatherImage(latitude: any, longitude:any){
+    return.this.http.get(`http://www.7timer.info/bin/civil.php?lon=${longitude}&lat=${latitude}&ac=0&lang=en&unit=metric&output=internal&tzshift=0`);
+  }
 }
