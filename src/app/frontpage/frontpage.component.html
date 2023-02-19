@@ -1,28 +1,38 @@
 <div class="page">
-<div class="card">
-     <div class="card-body">
-       <h5 class="card-title">Search Weather Information</h5>
-       <div>
+     <div class="row">
+          <div class="col-sm-6">
+               <div class="card">
+                    <div class="card-body">
+                         <h3 class="card-title">Weather Information</h3>
+                         <div class="dataFlag">
+                              <div *ngIf="dataGeoCode">
+                                   <h4>City Name: {{cityName}}</h4>
+                                   <h4>Country Name: {{countryName}}</h4>
+                                   <h4>Latitude: {{Lat}}</h4>
+                                   <h4>Lon: {{Lon}}</h4>
+                              </div>
+                         </div>
 
-          <input #city type="text" placeholder="City Name">
-          
-          <button type="button" class="btn btn-primary" (click)="onCall(city.value)">Search</button>
-          <br>
-          <div class="geocodeInfo">
-          <div *ngIf="dataGeoCode">
-               <h1>City Name: {{cityName}}</h1>
-               <h1>Country Name: {{countryName}}</h1>
-               <h1>Latitude: {{Lat}}</h1>
-               <h1>Lon: {{Lon}}</h1>
+                         <div *ngIf="weatherFlag">
+                              <h4>Weather Info {{cityName}}</h4>
+                              <h4>Temperature right Now: {{tempRN}}&deg;C</h4>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+          <div class="col-sm-6">
+               <div *ngIf="weatherImageFlag">
+                    <div class="card">
+                         <div class="card-body">
+                              <h3 class="card-title">Weather Forecast next few days</h3>
+
+                              <div>
+                                   <img class="weatherImage" [src]="imageToShow" alt="Temperature This Week">
+                              </div>
+                         </div>
+                    </div>
+               </div>
           </div>
      </div>
-     
-          <div *ngIf="dataWeatherCode">
-               <h1>Weather Info {{cityName}}</h1>
-               <h1>Temperature right Now: {{tempRN}}&deg;C</h1>
-          </div>
-     
-     </div>
-     </div>
-   </div>
 </div>

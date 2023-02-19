@@ -1,7 +1,21 @@
 .card {
-    width: 50%;
-    background: lightblue;    
-    margin-left: 25%;
+    /* width: 50%; */
+    background: lightblue;
+    /* margin-left: 25%;
     margin-bottom: 25%;
-    margin-top: 10%;
+    margin-right: 25%; */
+    /* margin-top: 10%; */
 }
+
+.weatherImage {
+    size: 80%;
+    max-width: 80%;
+    height: auto;
+}
+
+/* .page{
+   
+} */
+/* .inputCity{
+    width: 50%;
+} */
