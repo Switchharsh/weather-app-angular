@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -6,8 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from '../dataservice';
-
-
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +18,16 @@ import { DataService } from '../dataservice';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
+  private data = new Subject<any>();
 
   constructor(private dataService: DataService,
     private sanitizer: DomSanitizer) { }
     ngOnInit(){
     }
+    // ngOnChanges(){
+    //   this.onChangesFlag;
+
+    // }
   //data from the APIs coming or not
   dataGeoCode: any; dataWeatherCode: any; dataWeatherImageCode: any;
 
@@ -32,6 +36,7 @@ export class FrontpageComponent implements OnInit {
 
   //flags for the 2 apis for using in *ngIf
   dataFlag = false; weatherFlag: boolean = false; weatherImageFlag: boolean = false;
+  // onChangesFlag = false;
 
   tempRN: any;
 
@@ -40,6 +45,7 @@ export class FrontpageComponent implements OnInit {
     this.dataFlag = false;
     this.weatherFlag = false;
     this.weatherImageFlag = false;
+    // this.onChangesFlag = true;
 
     //hardcoding cityName for developing time saving
     // cityName = "Jaipur";
@@ -98,4 +104,6 @@ export class FrontpageComponent implements OnInit {
       reader.readAsDataURL(image);
     }
   }
+
 }
+
