@@ -18,16 +18,23 @@ import { Subject } from 'rxjs';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
-  private data = new Subject<any>();
+  // private data = new Subject<any>();
 
   constructor(private dataService: DataService,
     private sanitizer: DomSanitizer) { }
     ngOnInit(){
+      
+    }
+    AfterContentInit(){
+      
     }
     // ngOnChanges(){
     //   this.onChangesFlag;
 
     // }
+
+  
+
   //data from the APIs coming or not
   dataGeoCode: any; dataWeatherCode: any; dataWeatherImageCode: any;
 
@@ -48,13 +55,15 @@ export class FrontpageComponent implements OnInit {
     // this.onChangesFlag = true;
 
     //hardcoding cityName for developing time saving
-    // cityName = "Jaipur";
+    cityName = "Jaipur";
 
     // console.log('hereh');
     this.dataService.getGeoCodeData(cityName).subscribe(data => {
+      console.log('data',data);
       this.dataFlag = true;
       this.dataGeoCode = data;
       // console.log(this.dataGeoCode.results[0].name);
+      debugger;
       this.cityName = this.dataGeoCode.results[0].name;
       this.countryName = this.dataGeoCode.results[0].country;
       this.Lat = this.dataGeoCode.results[0].latitude;

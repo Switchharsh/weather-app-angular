@@ -17,7 +17,7 @@ import { FrontpageComponent } from '../frontpage/frontpage.component'
   selector: 'app-navbarcomponent',
   templateUrl: './navbarcomponent.component.html',
   styleUrls: ['./navbarcomponent.component.css'],
-  // providers: [FrontpageComponent],
+  providers: [FrontpageComponent],
 })
 export class NavbarcomponentComponent {
 
