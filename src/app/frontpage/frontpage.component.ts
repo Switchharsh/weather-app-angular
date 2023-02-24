@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 // import{ Constants } from './config/constants'; 
 import { Injectable } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from '../dataservice';
-
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,25 +17,53 @@ import { DataService } from '../dataservice';
   templateUrl: './frontpage.component.html',
   styleUrls: ['./frontpage.component.css']
 })
-export class FrontpageComponent {
+export class FrontpageComponent implements OnInit {
+  // private data = new Subject<any>();
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+    private sanitizer: DomSanitizer) { }
+    ngOnInit(){
+      // this.onCall(this.cityName);
+      this.dataService.searchKeyOberserver.subscribe(res => {
+        if(res.length > 0){
+        this.onCall(res)
+      }})
+    }
+    AfterContentInit(){
+      
+    }
+    // ngOnChanges(){
+    //   this.onChangesFlag;
+
+    // }
+
+  
+
   //data from the APIs coming or not
-  dataGeoCode: any; dataWeatherCode: any;
+  dataGeoCode: any; dataWeatherCode: any; dataWeatherImageCode: any;
 
   // data of the geocoding api
   cityName: any; Lat: any = 0; Lon: any; countryName: any;
 
   //flags for the 2 apis for using in *ngIf
-  dataFlag = false; weatherFlag: boolean = false;
+  dataFlag = false; weatherFlag: boolean = false; weatherImageFlag: boolean = false;
+  // onChangesFlag = false;
 
   tempRN: any;
 
   onCall(cityName: string) {
+    // setting the flags to false to remove old data
     this.dataFlag = false;
     this.weatherFlag = false;
+    this.weatherImageFlag = false;
+    // this.onChangesFlag = true;
+
+    //hardcoding cityName for developing time saving
+    // cityName = "Jaipur";
+
     // console.log('hereh');
     this.dataService.getGeoCodeData(cityName).subscribe(data => {
+      console.log('data',data);
       this.dataFlag = true;
       this.dataGeoCode = data;
       // console.log(this.dataGeoCode.results[0].name);
@@ -43,10 +72,13 @@ export class FrontpageComponent {
       this.Lat = this.dataGeoCode.results[0].latitude;
       this.Lon = this.dataGeoCode.results[0].longitude;
       this.weatherInfoCall(this.Lat, this.Lon);
+      console.log("calling image api");
+      this.weatherImageCall(this.Lat, this.Lon);
     });
   }
-  weatherInfoCall(latitude: any, longitude: any) {
-    console.log('Lat', this.Lat);
+
+  weatherInfoCall(_latitude: any, _longitude: any) {
+    // console.log('Lat', this.Lat);
     if (this.Lat != 0) {
       this.dataService.getWeatherInfo(this.Lat, this.Lon).subscribe(data => {
         this.weatherFlag = true;
@@ -58,7 +90,32 @@ export class FrontpageComponent {
     }
   }
 
-  weatherImageCall(latitude:any, longitude: any){
-    if(this.lL)
-  })
+  weatherImageCall(_latitude: any, _longitude: any) {
+    console.log("image api initiating")
+    // if(this.lL)
+    if (this.Lat != 0) {
+      this.dataService.getWeatherImage(this.Lat, this.Lon).subscribe(data => {
+        this.weatherImageFlag = true;
+
+        this.createImageFromBlob(data);
+
+        // console.log("weather image api" + this.dataWeatherCode);
+      })
+    }
+  }
+
+  imageToShow: any;
+
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.imageToShow = reader.result;
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
+  }
+
 }
+
