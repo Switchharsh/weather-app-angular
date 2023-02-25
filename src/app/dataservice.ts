@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -31,5 +31,16 @@ export class DataService {
 
     // return img;
      }
+
+    
+     getDadJokes(): Observable<any> {
+      const headers = new HttpHeaders({
+        'Accept': 'application/json',
+      });
+      console.log( this.http.get(`https://icanhazdadjoke.com/`,{ headers }));
+
+      return this.http.get(`https://icanhazdadjoke.com/`,{ headers });
+    }
+
    
   }

@@ -1,8 +1,37 @@
 .navbar {
     /* width: 50%; */
-    background: lightblue;
+    background: black;
     /* margin-left: 25%;
     margin-bottom: 25%;
     margin-top: 10%;
     margin-right: 25%; */
 }
+.navbar-brand{
+    color: red;
+}
+
+.searchbar{
+    margin-right: 30%;
+    
+}
+
+
+/* Element | http://localhost:4200/ */
+
+.btn {
+    /* margin-left: 40px; */
+    margin-left: 5%;
+  }
+
+/* Element | http://localhost:4200/ */
+
+.btn {
+    padding-bottom: 1px;
+  }
+  
+  /* Element | http://localhost:4200/ */
+  
+  .searchbar > input:nth-child(2) {
+    padding-bottom: 8px;
+  }
+    

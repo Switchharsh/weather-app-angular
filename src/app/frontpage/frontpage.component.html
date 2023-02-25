@@ -1,12 +1,24 @@
-
 <div class="page">
+     <div *ngIf="dadjokesflag">
+          <div class="joke">
+               <div class="card">
+                    <div class="card-body">
+                         <h3 class="card-title">Here is a joke for you!</h3>
+
+                         <h4 class="card-text">{{dadJoke}}</h4>
+
+                    </div>
+               </div>
+          </div>
+     </div>
      <div class="row">
           <div class="col-sm-6">
                <div class="card">
                     <div class="card-body">
-                         <h3 class="card-title">Weather Information</h3>
-                         <div class="dataFlag">
-                              <div *ngIf="dataFlag">
+                         <div *ngIf="dataFlag">
+                              <h3 class="card-title">Weather Information</h3>
+                              <div class="dataFlag">
+
                                    <h4>City Name: {{cityName}}</h4>
                                    <h4>Country Name: {{countryName}}</h4>
                                    <h4>Latitude: {{Lat}}</h4>

@@ -1,6 +1,6 @@
 .card {
     /* width: 50%; */
-    background: lightblue;
+    background: black;
     /* margin-left: 25%;
     margin-bottom: 25%;
     margin-right: 25%; */
@@ -11,6 +11,12 @@
     size: 80%;
     max-width: 80%;
     height: auto;
+}
+
+.joke{
+    margin-top: 10%;
+    margin-left: 40%;
+    margin-right: 30%;
 }
 
 /* .page{

@@ -1,8 +1,12 @@
+<div>
 <nav class="navbar navbar-light justify-content-between">
   <a class="navbar-brand">All Purpose Weather Application</a>
-  <div>
-    <h4 class="card-title">Search Weather Information</h4>
+<br/> <br/>
+  <div class="searchbar">
+    <h4>Search Weather Information</h4>
     <input #city type="text" placeholder="City Name">
+    
     <button type="button" class="btn btn-primary" (click)="callApis(city.value)">Search</button>
   </div>
 </nav>
+</div>

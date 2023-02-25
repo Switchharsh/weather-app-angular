@@ -22,22 +22,31 @@ export class FrontpageComponent implements OnInit {
 
   constructor(private dataService: DataService,
     private sanitizer: DomSanitizer) { }
-    ngOnInit(){
-      // this.onCall(this.cityName);
-      this.dataService.searchKeyOberserver.subscribe(res => {
-        if(res.length > 0){
+  ngOnInit() {
+        // calling dad joke 
+        this.callingDadJoke();  
+    // this.onCall(this.cityName);
+    this.dataService.searchKeyOberserver.subscribe(res => {
+     
+      if (res.length > 0) {
         this.onCall(res)
-      }})
-    }
-    AfterContentInit(){
-      
-    }
-    // ngOnChanges(){
-    //   this.onChangesFlag;
+      }
+      else {
+        this.dataFlag = false;
+        this.weatherFlag = false;
+        this.weatherImageFlag = false;
+      }
+    })
+  }
+  AfterContentInit() {
 
-    // }
+  }
+  // ngOnChanges(){
+  //   this.onChangesFlag;
 
-  
+  // }
+
+
 
   //data from the APIs coming or not
   dataGeoCode: any; dataWeatherCode: any; dataWeatherImageCode: any;
@@ -45,17 +54,32 @@ export class FrontpageComponent implements OnInit {
   // data of the geocoding api
   cityName: any; Lat: any = 0; Lon: any; countryName: any;
 
+  // data of Icanhazdadjokes api
+  dadJoke: any;
+
   //flags for the 2 apis for using in *ngIf
   dataFlag = false; weatherFlag: boolean = false; weatherImageFlag: boolean = false;
+  dadjokesflag = true;
   // onChangesFlag = false;
 
   tempRN: any;
+
+
+  callingDadJoke(){
+    console.log("here");
+    this.dadjokesflag = true;
+    this.dataService.getDadJokes().subscribe(data =>{
+        console.log("joke api "+data);
+        this.dadJoke = data.joke;
+    })
+  }
 
   onCall(cityName: string) {
     // setting the flags to false to remove old data
     this.dataFlag = false;
     this.weatherFlag = false;
     this.weatherImageFlag = false;
+    this.dadjokesflag = false;
     // this.onChangesFlag = true;
 
     //hardcoding cityName for developing time saving
@@ -63,7 +87,7 @@ export class FrontpageComponent implements OnInit {
 
     // console.log('hereh');
     this.dataService.getGeoCodeData(cityName).subscribe(data => {
-      console.log('data',data);
+      console.log('data', data);
       this.dataFlag = true;
       this.dataGeoCode = data;
       // console.log(this.dataGeoCode.results[0].name);
