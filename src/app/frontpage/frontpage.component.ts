@@ -23,7 +23,11 @@ export class FrontpageComponent implements OnInit {
   constructor(private dataService: DataService,
     private sanitizer: DomSanitizer) { }
     ngOnInit(){
-      
+      // this.onCall(this.cityName);
+      this.dataService.searchKeyOberserver.subscribe(res => {
+        if(res.length > 0){
+        this.onCall(res)
+      }})
     }
     AfterContentInit(){
       
@@ -55,7 +59,7 @@ export class FrontpageComponent implements OnInit {
     // this.onChangesFlag = true;
 
     //hardcoding cityName for developing time saving
-    cityName = "Jaipur";
+    // cityName = "Jaipur";
 
     // console.log('hereh');
     this.dataService.getGeoCodeData(cityName).subscribe(data => {
@@ -63,7 +67,6 @@ export class FrontpageComponent implements OnInit {
       this.dataFlag = true;
       this.dataGeoCode = data;
       // console.log(this.dataGeoCode.results[0].name);
-      debugger;
       this.cityName = this.dataGeoCode.results[0].name;
       this.countryName = this.dataGeoCode.results[0].country;
       this.Lat = this.dataGeoCode.results[0].latitude;

@@ -23,9 +23,10 @@ export class NavbarcomponentComponent {
 
   constructor(private dataService: DataService,
     private sanitizer: DomSanitizer,
-    private frontpage: FrontpageComponent) { }
+) { }
   
     callApis(city: any){
-      this.frontpage.onCall(city);
+      // this.frontpage.onCall(city);
+      this.dataService.search(city)
     }
 }

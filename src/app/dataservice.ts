@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
+  private searchKey = new BehaviorSubject('');
+  searchKeyOberserver = this.searchKey.asObservable()
   constructor(private http: HttpClient) { }
 
+  search(str: string){
+    this.searchKey.next(str)
+  }
   getGeoCodeData(cityName: string) {
    return this.http.get(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}`);
     // return this.http.get(`https://geocoding-api.open-meteo.com/v1/search?name=Jaipur`);
