@@ -1,12 +1,32 @@
 <div>
-<nav class="navbar navbar-light justify-content-between">
-  <a class="navbar-brand">All Purpose Weather Application</a>
-<br/> <br/>
-  <div class="searchbar">
-    <h4>Search Weather Information</h4>
-    <input #city type="text" placeholder="City Name">
-    
-    <button type="button" class="btn btn-primary" (click)="callApis(city.value)">Search</button>
-  </div>
-</nav>
+  <nav class="navbar navbar-light justify-content-between">
+    <div>
+      <!-- <a class="navbar-brand">All Purpose Weather Application</a> -->
+      <h4 style="color: red">All Purpose Weather Application</h4>
+      
+    </div>
+    <div class="searchbar">
+      <h4>Search Weather Information</h4>
+      <input #city type="text" placeholder="City Name">
+
+      <button type="button" class="btn btn-primary" (click)="callApis(city.value)">Search</button>
+    </div>
+    <br>
+    <div>
+      <h4>Select the type of weather information required</h4>
+      <select [(ngModel)]="selectedValue" placeholder="API Type">
+        <option value="Civil" selected="selected">Civil</option>
+        <option value="Meteorological">Meteorological</option>
+        <option value="Astronomical">Astronomical</option>
+      </select>
+      <!-- <div ngbDropdown>
+        <button class="btn btn-outline-primary" ngbDropdownToggle>Dropdown</button>
+        <div ngbDropdownMenu>
+          <button class="dropdown-item" *ngFor="let option of options" (click)="onOptionSelected(option)">{{option}}</button>
+        </div>
+      </div> -->
+      
+      
+    </div>
+  </nav>
 </div>

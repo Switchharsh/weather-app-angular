@@ -1,37 +1,63 @@
 .navbar {
-    /* width: 50%; */
-    background: black;
-    /* margin-left: 25%;
+  /* width: 50%; */
+  background: black;
+  /* margin-left: 25%;
     margin-bottom: 25%;
     margin-top: 10%;
     margin-right: 25%; */
 }
-.navbar-brand{
-    color: red;
+
+.navbar-brand {
+  color: red;
 }
 
-.searchbar{
-    margin-right: 30%;
-    
+.searchbar {
+  margin-right: 30%;
+  margin-top: 10px;
+
+}
+
+/* styles.css | http://localhost:4200/styles.css */
+
+input,
+optgroup,
+select,
+textarea {
+  background-color: aqua;
 }
 
 
 /* Element | http://localhost:4200/ */
 
 .btn {
-    /* margin-left: 40px; */
-    margin-left: 5%;
-  }
+  /* margin-left: 40px; */
+  margin-left: 5%;
+}
 
 /* Element | http://localhost:4200/ */
 
 .btn {
-    padding-bottom: 1px;
-  }
-  
-  /* Element | http://localhost:4200/ */
-  
-  .searchbar > input:nth-child(2) {
-    padding-bottom: 8px;
-  }
-    
+  padding-bottom: 1px;
+}
+
+/* Element | http://localhost:4200/ */
+
+.searchbar>input:nth-child(2) {
+  padding-bottom: 8px;
+}
+
+
+/* Element | http://localhost:4200/ */
+
+.radiobuttons {
+  color: red;
+}
+
+.dropdown-menu{
+  color: white;
+}
+
+a{
+  color: white;
+  background-color: blue;
+}

@@ -20,6 +20,8 @@ import { FrontpageComponent } from '../frontpage/frontpage.component'
   providers: [FrontpageComponent],
 })
 export class NavbarcomponentComponent {
+  selectedValue!: string;
+
 
   constructor(private dataService: DataService,
     private sanitizer: DomSanitizer,
@@ -27,6 +29,21 @@ export class NavbarcomponentComponent {
   
     callApis(city: any){
       // this.frontpage.onCall(city);
-      this.dataService.search(city)
+      this.dataService.search(city);
+      console.log("selectedValue "+this.selectedValue);
+      this.dataService.apiSelect(this.selectedValue);
     }
+    // showDropdown = false;
+
+// toggleDropdown() {
+//   this.showDropdown = !this.showDropdown;
+// }
+
+//   selectedOption!: string;
+//     options = ["Civil","Astronomical","Meteorological"]
+//   onOptionSelected(option: string) {
+//     console.log("option "+ option);
+//     this.selectedOption = option;
+// }
+
 }

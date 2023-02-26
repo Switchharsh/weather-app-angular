@@ -24,11 +24,13 @@ export class FrontpageComponent implements OnInit {
     private sanitizer: DomSanitizer) { }
   ngOnInit() {
         // calling dad joke 
-        this.callingDadJoke();  
+        this.callingDadJoke(),
     // this.onCall(this.cityName);
+   
+    //calling the apis
     this.dataService.searchKeyOberserver.subscribe(res => {
      
-      if (res.length > 0) {
+      if (res.length >= 0) {
         this.onCall(res)
       }
       else {
@@ -46,7 +48,8 @@ export class FrontpageComponent implements OnInit {
 
   // }
 
-
+  // Apis to use variables
+  apiToUse: any;
 
   //data from the APIs coming or not
   dataGeoCode: any; dataWeatherCode: any; dataWeatherImageCode: any;
@@ -63,6 +66,7 @@ export class FrontpageComponent implements OnInit {
   // onChangesFlag = false;
 
   tempRN: any;
+  
 
 
   callingDadJoke(){
@@ -83,7 +87,7 @@ export class FrontpageComponent implements OnInit {
     // this.onChangesFlag = true;
 
     //hardcoding cityName for developing time saving
-    // cityName = "Jaipur";
+    cityName = "Jaipur";
 
     // console.log('hereh');
     this.dataService.getGeoCodeData(cityName).subscribe(data => {

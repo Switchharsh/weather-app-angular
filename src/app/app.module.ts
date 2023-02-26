@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarcomponentComponent } from './navbarcomponent/navbarcomponent.component';
+import { FormsModule } from '@angular/forms';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NavbarcomponentComponent } from './navbarcomponent/navbarcomponent.comp
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     // NgbModule
   ],
   providers: [],
