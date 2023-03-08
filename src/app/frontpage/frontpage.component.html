@@ -29,6 +29,7 @@
                          <div *ngIf="weatherFlag">
                               <h4>Weather Info {{cityName}}</h4>
                               <h4>Temperature right Now: {{tempRN}}&deg;C</h4>
+                              <h4>Cloud Cover: {{cloudcover}}%</h4>
                          </div>
                     </div>
 
@@ -42,6 +43,7 @@
 
                               <div>
                                    <img class="weatherImage" [src]="imageToShow" alt="Temperature This Week">
+                                   <app-apiphoto></app-apiphoto>
                               </div>
                          </div>
                     </div>

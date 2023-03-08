@@ -1,6 +1,7 @@
 .card {
     /* width: 50%; */
-    background: black;
+    /* background: black; */
+    background: lavender;
     /* margin-left: 25%;
     margin-bottom: 25%;
     margin-right: 25%; */
@@ -8,8 +9,8 @@
 }
 
 .weatherImage {
-    size: 80%;
-    max-width: 80%;
+    size: 100%;
+    max-width: 100%;
     height: auto;
 }
 

@@ -65,7 +65,7 @@ export class FrontpageComponent implements OnInit {
   dadjokesflag = true;
   // onChangesFlag = false;
 
-  tempRN: any;
+  tempRN: any; cloudcover:any;
   
 
 
@@ -113,6 +113,7 @@ export class FrontpageComponent implements OnInit {
         this.dataWeatherCode = data;
         console.log(this.dataWeatherCode);
         this.tempRN = this.dataWeatherCode.dataseries[0].temp2m;
+        this.cloudcover = (this.dataWeatherCode.dataseries[0].cloudcover)/8*100;
         // console.log(this.tempRN);
       })
     }

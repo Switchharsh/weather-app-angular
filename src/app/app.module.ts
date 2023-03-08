@@ -7,13 +7,15 @@ import { FrontpageComponent } from './frontpage/frontpage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarcomponentComponent } from './navbarcomponent/navbarcomponent.component';
 import { FormsModule } from '@angular/forms';
+import { ApiphotoComponent } from './frontpage/apiphoto/apiphoto.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
     AppComponent,
     FrontpageComponent,
-    NavbarcomponentComponent
+    NavbarcomponentComponent,
+    ApiphotoComponent
   ],
   imports: [
     BrowserModule,
